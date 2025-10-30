@@ -121,6 +121,7 @@ function Projects() {
                       href={project.githubUrl}
                       className="w-12 h-12 bg-slate-800 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors"
                       aria-label="View GitHub"
+                      target="_blank"
                     >
                       <Github className="w-5 h-5 text-white" />
                     </a>
@@ -128,6 +129,7 @@ function Projects() {
                       href={project.liveUrl}
                       className="w-12 h-12 bg-slate-800 hover:bg-purple-500 rounded-lg flex items-center justify-center transition-colors"
                       aria-label="View Live"
+                      target="_blank"
                     >
                       <ExternalLink className="w-5 h-5 text-white" />
                     </a>
@@ -169,6 +171,7 @@ function Projects() {
                     <a
                       href={project.githubUrl}
                       className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm"
+                      target="_blank"
                     >
                       <GitBranch className="w-4 h-4" />
                       <span>Code</span>
@@ -176,6 +179,7 @@ function Projects() {
                     <a
                       href={project.liveUrl}
                       className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm"
+                      target="_blank"
                     >
                       <Eye className="w-4 h-4" />
                       <span>Live Demo</span>

@@ -198,6 +198,7 @@ function Contact() {
                         href={social.link}
                         className="group/social relative"
                         aria-label={social.label}
+                        target="_blank"
                       >
                         <div className="absolute -inset-1 bg-linear-to-r from-blue-400 to-purple-500 rounded-lg blur opacity-25 group-hover/social:opacity-75 transition duration-300"></div>
                         <div className="relative p-3 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-110">
