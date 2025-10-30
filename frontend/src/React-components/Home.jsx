@@ -144,9 +144,11 @@ function Home({ onNavigate, refs }) {
                 <div className="absolute inset-0 bg-linear-to-r from-purple-600 to-pink-600 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
               </button>
 
-              <button className="px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-white font-semibold rounded-lg hover:bg-slate-700/50 hover:border-blue-500/50 transition-all duration-300">
-                Download CV
-              </button>
+              <a href="/cv.demo.webp" download>
+                <button className="px-8 py-4 bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-white font-semibold rounded-lg hover:bg-slate-700/50 hover:border-blue-500/50 transition-all duration-300 active:scale-95">
+                  Download CV
+                </button>
+              </a>
             </div>
 
             {/* Skills Icons */}
