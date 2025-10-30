@@ -4,7 +4,13 @@ import { ArrowRight, Code, Sparkles, Zap } from "lucide-react";
 function Home({ onNavigate, refs }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [typedText, setTypedText] = useState("");
-  const roles = ["Developer", "Designer", "Creator", "Problem Solver"];
+  const roles = [
+    "Developer",
+    "Creator",
+    "Problem Solver",
+    "Engineer",
+    "Explorer",
+  ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
