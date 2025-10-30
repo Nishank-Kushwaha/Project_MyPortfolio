@@ -22,10 +22,33 @@ function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        console.log("✅ Message sent successfully!");
+      } else {
+        console.error("❌ Failed to send:", data.error);
+      }
+    } catch (error) {
+      console.error("⚠️ Network error:", error);
+    }
+
+    setSending(false);
+
     setTimeout(() => {
       setSubmitted(false);
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -271,10 +294,42 @@ function Contact() {
 
                     <button
                       onClick={handleSubmit}
-                      className="w-full px-6 py-4 bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 flex items-center justify-center space-x-2 group"
+                      disabled={sending}
+                      className={`relative w-full px-6 py-4 bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 group
+                      ${
+                        sending
+                          ? "opacity-90 cursor-wait"
+                          : "hover:shadow-lg hover:shadow-blue-500/50"
+                      }
+                    `}
                     >
-                      <span>Send Message</span>
-                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      {sending ? (
+                        <svg
+                          className="animate-spin h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          ></path>
+                        </svg>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </>
+                      )}
                     </button>
                   </div>
                 )}
