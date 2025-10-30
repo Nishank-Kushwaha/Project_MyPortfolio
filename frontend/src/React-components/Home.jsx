@@ -8,8 +8,10 @@ function Home({ onNavigate, refs }) {
     "Developer",
     "Creator",
     "Problem Solver",
-    "Engineer",
-    "Explorer",
+    "Tech Enthusiast",
+    "Learner",
+    "Thinker",
+    "Builder",
   ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
